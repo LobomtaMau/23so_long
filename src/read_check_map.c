@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_check_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
+/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:00:27 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/09 16:02:23 by mbaptist         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:04:57 by struf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_handle_error(t_game *game)
+void	ft_handle_error(t_game *game)
 {
 	if (!ft_is_rectangular(game))
 	{
@@ -36,11 +36,11 @@ void ft_handle_error(t_game *game)
 	}
 }
 
-void ft_read_check_map(t_game *game, char *map_file)
+void	ft_read_check_map(t_game *game, char *map_file)
 {
-	char *line;
-	int map_fd;
-	char *map_tmp;
+	char	*line;
+	int		map_fd;
+	char	*map_tmp;
 
 	map_fd = open(map_file, O_RDONLY);
 	if (map_fd == -1)
@@ -53,7 +53,7 @@ void ft_read_check_map(t_game *game, char *map_file)
 	{
 		line = get_next_line(map_fd);
 		if (line == NULL)
-			break;
+			break ;
 		map_tmp = ft_append_strs(&map_tmp, line);
 		game->map_rows++;
 		free(line);
@@ -64,10 +64,10 @@ void ft_read_check_map(t_game *game, char *map_file)
 	ft_handle_error(game);
 }
 
-int ft_is_rectangular(t_game *game)
+int	ft_is_rectangular(t_game *game)
 {
-	size_t expected_len;
-	int i;
+	size_t	expected_len;
+	int		i;
 
 	i = 0;
 	expected_len = ft_strlen(game->map[0]);
@@ -80,9 +80,9 @@ int ft_is_rectangular(t_game *game)
 	return (1);
 }
 
-int ft_is_surrounded_by_walls(t_game *game)
+int	ft_is_surrounded_by_walls(t_game *game)
 {
-    int i;
+	int	i;
 
 	i = 0;
 	while (game->map[0][i])
@@ -91,26 +91,27 @@ int ft_is_surrounded_by_walls(t_game *game)
 		game->map_columns++;
 	}
 	i = 0;
-    while (i < game->map_columns)
-    {
-        if (game->map[0][i] != '1' || game->map[game->map_rows - 1][i] != '1')
-            return (0);
-        i++;
-    }
-    i = 0;
-    while (i < game->map_rows)
-    {
-        if (game->map[i][0] != '1' || game->map[i][game->map_columns - 1] != '1')
-            return (0);
-        i++;
-    }
-    return (1);
+	while (i < game->map_columns)
+	{
+		if (game->map[0][i] != '1' || game->map[game->map_rows - 1][i] != '1')
+			return (0);
+		i++;
+	}
+	i = 0;
+	while (i < game->map_rows)
+	{
+		if (game->map[i][0] != '1' || game->map[i][game->map_columns
+			- 1] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-int ft_has_valid_elements(t_game *game)
+int	ft_has_valid_elements(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map[i])

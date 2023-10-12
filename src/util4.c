@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util4.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
+/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:46:00 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/06 16:31:55 by mbaptist         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:32:18 by struf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ static int	ft_count_words(char const *s, char c)
 		{
 			count++;
 			while (*s && *s != c)
-			{
 				s++;
-			}
 		}
 	}
 	return (count);
@@ -64,11 +62,6 @@ char	**ft_split(char const *s, char c)
 		while (*s && *s == c)
 			s++;
 		res[i] = ft_substr(s, 0, ft_word_len(s, c));
-		if (!res[i])
-		{
-			ft_free_strarr(res);
-			return (NULL);
-		}
 		s += ft_word_len(s, c);
 		i++;
 	}
@@ -78,7 +71,7 @@ char	**ft_split(char const *s, char c)
 
 void	ft_free_strarr(char **strarr)
 {
-	int i;
+	int	i;
 
 	if (strarr)
 	{
@@ -111,33 +104,4 @@ static int	ft_nblen(int nb)
 		len++;
 	}
 	return (len);
-}
-
-char	*ft_itoa(int n)
-{
-	int				len;
-	unsigned int	res;
-	char			*str;
-
-	len = ft_nblen(n);
-	str = malloc(sizeof(*str) * (len + 1));
-	if (!str)
-		return (NULL);
-	str[len] = 0;
-	if (n < 0)
-	{
-		res = -n;
-		str[0] = '-';
-	}
-	else
-		res = n;
-	if (res == 0)
-		str[0] = '0';
-	while (len && res)
-	{
-		len--;
-		str[len] = res % 10 + '0';
-		res = res / 10;
-	}
-	return (str);
 }
