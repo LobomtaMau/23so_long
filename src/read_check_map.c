@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_check_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:00:27 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/12 11:04:57 by struf            ###   ########.fr       */
+/*   Updated: 2023/10/12 17:16:42 by mbaptist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,15 @@
 void	ft_handle_error(t_game *game)
 {
 	if (!ft_is_rectangular(game))
-	{
-		ft_putstr_fd("Error: Map is not rectangular.\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		error_msg(game, "Error: Map is not rectangular.\n");
 	if (!ft_has_valid_elements(game))
-	{
-		ft_putstr_fd("Error: Map does not have valid elements.\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		error_msg(game, "Error: Map does not have valid elements.\n");
 	if (!ft_is_surrounded_by_walls(game))
-	{
-		ft_putstr_fd("Error: Map is not surrounded by walls.\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		error_msg(game, "Error: Map is not surrounded by walls.\n");
 	if (!ft_valid_path(game))
-	{
-		ft_putstr_fd("Error: Map does not have valid path\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		error_msg(game, "Error: Map does not have valid path\n");
+	if (!valid_sprites(game))
+		error_msg(game, "Error: Map does not have valid cell\n");
 }
 
 void	ft_read_check_map(t_game *game, char *map_file)

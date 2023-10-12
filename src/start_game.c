@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:00:58 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/12 11:37:52 by struf            ###   ########.fr       */
+/*   Updated: 2023/10/12 17:14:41 by mbaptist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 
 void	ft_start_game(t_game *game)
 {
-	game->mlx_ptr = mlx_init();
-	if (!game->mlx_ptr)
-	{
-		ft_putstr_fd("Error: MiniLibX initialization failed.\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	game->win_ptr = mlx_new_window(game->mlx_ptr, game->map_columns * 64,
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		error_msg(game, "Error: MiniLibX initialization failed.\n");
+	game->win_ptr = mlx_new_window(game->mlx, game->map_columns * 64,
 			game->map_rows * 64, "so_long");
 	if (!game->win_ptr)
-	{
-		ft_putstr_fd("Error: Failed to create window.\n", 2);
-		exit(EXIT_FAILURE);
-	}
+		error_msg(game, "Error: Failed to create window.\n");// close
 	load_texture(game);
+	// if (!dif_sprite(game))
+	// {
+	// 	error_msg(game, "Error: Failed to create sprites.\n"); //close
+	// 	close_window(game);
+	// }
 	select_img(game);
 	game->movements = 0;
 	mlx_hook(game->win_ptr, 17, 1L << 17, close_window, game);
 	mlx_key_hook(game->win_ptr, ft_key_hook, game);
-	mlx_loop_hook(game->mlx_ptr, render_game, game);
-	mlx_loop(game->mlx_ptr);
+	mlx_loop_hook(game->mlx, render_game, game);
+	mlx_loop(game->mlx);
 }
 
 void	frame_rot(t_game *game)

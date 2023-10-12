@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:49:54 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/12 11:46:04 by struf            ###   ########.fr       */
+/*   Updated: 2023/10/12 16:53:44 by mbaptist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_game
 	int		crab_x;
 	int		crab_y;
 	int		movements;
-	void	*mlx_ptr;
+	void	*mlx;
 	void	*win_ptr;
 	void	*i_player[6];
 	void	*i_floor;
@@ -65,6 +65,8 @@ void		ft_handle_error(t_game *game);
 int			ft_valid_path(t_game *game);
 void		ft_flood_fill(char **map_tmp, int x, int y, int *counter);
 void		ft_start_game(t_game *game);
+void destroy_map(t_game *game);
+void error_msg(t_game *game, char *msg);
 
 //Textures
 void		load_texture(t_game *game);
@@ -73,8 +75,10 @@ void		select_img(t_game *game);
 int			render_game(t_game *game);
 void		frame_rot(t_game *game);
 void		print_moves(t_game *game);
-void		destroy_image_array(void *mlx_ptr, void **image_array,
+void		destroy_img(void *mlx_ptr, void **image_array,
 				int array_size);
+int	valid_sprites(t_game *game);
+int dif_sprite(t_game *game);
 
 //Hooks
 int			ft_key_hook(int keycode, t_game *game);
@@ -96,7 +100,6 @@ size_t		ft_strlcpy(char *dest, const char *src, size_t destsize);
 size_t		ft_strlcat(char *dest, const char *src, size_t dest_size);
 char		**ft_split(char const *s, char c);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-void		ft_free_strarr(char **strarr);
 int			ft_printf(const char *type, ...);
 void		ft_putdigit(long long int n, int base, int *len);
 char		*ft_itoa(int n);

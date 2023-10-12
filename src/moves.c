@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:46:56 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/12 11:48:16 by struf            ###   ########.fr       */
+/*   Updated: 2023/10/12 15:55:31 by mbaptist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	ft_key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-void	destroy_image_array(void *mlx_ptr, void **image_array, int array_size)
+void	destroy_img(void *mlx_ptr, void **image_array, int array_size)
 {
 	int	i;
 

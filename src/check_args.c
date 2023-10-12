@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:33:38 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/12 11:48:23 by struf            ###   ########.fr       */
+/*   Updated: 2023/10/12 17:09:15 by mbaptist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_flood_fill(char **map_tmp, int x, int y, int *counter)
 		(*counter)++;
 	if (map_tmp[y][x] == 'E')
 		map_tmp[y][x] = 'F';
-	if (map_tmp[y][x] == '1' || map_tmp[y][x] == 'F')
+	if (map_tmp[y][x] == '1' || map_tmp[y][x] == 'F' || map_tmp[y][x] == 'B')
 		return ;
 	map_tmp[y][x] = 'F';
 	ft_flood_fill(map_tmp, x + 1, y, counter);
@@ -77,6 +77,22 @@ void	ft_flood_fill(char **map_tmp, int x, int y, int *counter)
 
 int	close_window(t_game *game)
 {
+	//destroy_map(game);
+	mlx_destroy_image(game->mlx, game->i_floor);
+	mlx_destroy_image(game->mlx, game->i_wall);
+	mlx_destroy_image(game->mlx, game->i_exit);
+	destroy_img(game->mlx, game->i_player, 6);
+	destroy_img(game->mlx, game->i_coin, 6);
+	destroy_img(game->mlx, game->i_crab, 6);
+	mlx_destroy_window(game->mlx, game->win_ptr);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
+
+void destroy_map(t_game *game)
+{
 	int	i;
 
 	i = 0;
@@ -86,15 +102,4 @@ int	close_window(t_game *game)
 		i++;
 	}
 	free(game->map);
-	mlx_destroy_image(game->mlx_ptr, game->i_floor);
-	mlx_destroy_image(game->mlx_ptr, game->i_wall);
-	mlx_destroy_image(game->mlx_ptr, game->i_exit);
-	destroy_image_array(game->mlx_ptr, game->i_player, 6);
-	destroy_image_array(game->mlx_ptr, game->i_coin, 6);
-	destroy_image_array(game->mlx_ptr, game->i_crab, 6);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr);
-	free(game->mlx_ptr);
-	exit(EXIT_SUCCESS);
-	return (0);
 }
