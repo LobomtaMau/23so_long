@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
+/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 15:49:54 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/12 16:53:44 by mbaptist         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:23:01 by struf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void		ft_handle_error(t_game *game);
 int			ft_valid_path(t_game *game);
 void		ft_flood_fill(char **map_tmp, int x, int y, int *counter);
 void		ft_start_game(t_game *game);
-void destroy_map(t_game *game);
-void error_msg(t_game *game, char *msg);
+void		destroy_map(t_game *game);
+void		error_msg(t_game *game, char *msg);
 
 //Textures
 void		load_texture(t_game *game);
@@ -75,10 +75,8 @@ void		select_img(t_game *game);
 int			render_game(t_game *game);
 void		frame_rot(t_game *game);
 void		print_moves(t_game *game);
-void		destroy_img(void *mlx_ptr, void **image_array,
-				int array_size);
-int	valid_sprites(t_game *game);
-int dif_sprite(t_game *game);
+void		destroy_img(void *mlx_ptr, void **image_array, int array_size);
+int			valid_sprites(t_game *game);
 
 //Hooks
 int			ft_key_hook(int keycode, t_game *game);

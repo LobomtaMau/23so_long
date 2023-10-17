@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
+/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:33:38 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/12 17:09:15 by mbaptist         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:00:03 by struf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_flood_fill(char **map_tmp, int x, int y, int *counter)
 
 int	close_window(t_game *game)
 {
-	//destroy_map(game);
+	destroy_map(game);
 	mlx_destroy_image(game->mlx, game->i_floor);
 	mlx_destroy_image(game->mlx, game->i_wall);
 	mlx_destroy_image(game->mlx, game->i_exit);
@@ -91,7 +91,7 @@ int	close_window(t_game *game)
 	return (0);
 }
 
-void destroy_map(t_game *game)
+void	destroy_map(t_game *game)
 {
 	int	i;
 

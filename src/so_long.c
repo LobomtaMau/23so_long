@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
+/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:34:26 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/12 16:50:38 by mbaptist         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:22:42 by struf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	main(int argc, char **argv)
 	ft_start_game(&game);
 }
 
-void error_msg(t_game *game, char *msg)
+void	error_msg(t_game *game, char *msg)
 {
-    ft_putstr_fd(msg, 2);
-    destroy_map(game);
-    exit(EXIT_FAILURE);
+	ft_putstr_fd(msg, 2);
+	destroy_map(game);
+	exit(EXIT_FAILURE);
 }
 
 int	valid_sprites(t_game *game)
@@ -40,7 +40,9 @@ int	valid_sprites(t_game *game)
 		x = 0;
 		while (game->map[y][x])
 		{
-			if (game->map[y][x] != 'P' && game->map[y][x] != '0' && game->map[y][x] != '1' && game->map[y][x] != 'E' && game->map[y][x] != 'C' && game->map[y][x] != 'B')
+			if (game->map[y][x] != 'P' && game->map[y][x] != '0'
+				&& game->map[y][x] != '1' && game->map[y][x] != 'E'
+				&& game->map[y][x] != 'C' && game->map[y][x] != 'B')
 				return (0);
 			x++;
 		}

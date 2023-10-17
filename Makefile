@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+         #
+#    By: struf <struf@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/03 11:05:06 by mbaptist          #+#    #+#              #
-#    Updated: 2023/10/12 13:26:33 by mbaptist         ###   ########.fr        #
+#    Updated: 2023/10/17 11:14:51 by struf            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -gdwarf-4
 RM = rm -fr
 
 all: $(NAME)

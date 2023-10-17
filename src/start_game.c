@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbaptist <mbaptist@student.42.fr>          +#+  +:+       +#+        */
+/*   By: struf <struf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 12:00:58 by mbaptist          #+#    #+#             */
-/*   Updated: 2023/10/17 10:53:40 by mbaptist         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:02:23 by struf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,8 @@ void	ft_start_game(t_game *game)
 	game->win_ptr = mlx_new_window(game->mlx, game->map_columns * 64,
 			game->map_rows * 64, "so_long");
 	if (!game->win_ptr)
-		error_msg(game, "Error: Failed to create window.\n");// close
+		error_msg(game, "Error: Failed to create window.\n");
 	load_texture(game);
-	// if (!dif_sprite(game))
-	// {
-	// 	error_msg(game, "Error: Failed to create sprites.\n"); //close
-	// 	close_window(game);
-	// }
 	select_img(game);
 	game->movements = 0;
 	mlx_hook(game->win_ptr, 17, 1L << 17, close_window, game);

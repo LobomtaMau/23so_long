@@ -62,7 +62,6 @@ void	print_img(t_game *game, int x, int y)
 			game->i_crab[game->frame_crab], x * IMG_WIDTH, y * IMG_HEIGHT);
 }
 
-
 void	print_moves(t_game *game)
 {
 	char	*movement_t;
@@ -91,33 +90,3 @@ void	select_img(t_game *game)
 	}
 	print_moves(game);
 }
-
-// int dif_sprite(t_game *game)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (i < 6)
-// 	{
-// 		if(!game->i_player[i])
-// 			return (0);
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (i < 6)
-// 	{
-// 		if(!game->i_coin[i])
-// 			return (0);
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (i < 6)
-// 	{
-// 		if(!game->i_crab[i])
-// 			return (0);
-// 		i++;
-// 	}
-// 	if((!game->i_floor) || (!game->i_exit) || (!game->i_wall))
-// 		return (0);
-// 	return (1);
-// }
